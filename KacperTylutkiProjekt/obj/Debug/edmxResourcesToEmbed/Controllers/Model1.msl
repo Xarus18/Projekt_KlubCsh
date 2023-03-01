@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="ADRES">
+      <EntityTypeMapping TypeName="Model.ADRES">
+        <MappingFragment StoreEntitySet="ADRES">
+          <ScalarProperty Name="ID_ADRESU" ColumnName="ID_ADRESU" />
+          <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+          <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+          <ScalarProperty Name="KOD_POCZTOWY" ColumnName="KOD_POCZTOWY" />
+          <ScalarProperty Name="NR_BUDYNKU" ColumnName="NR_BUDYNKU" />
+          <ScalarProperty Name="NR_MIESZKANIA" ColumnName="NR_MIESZKANIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADRES_OBIEKTU">
+      <EntityTypeMapping TypeName="Model.ADRES_OBIEKTU">
+        <MappingFragment StoreEntitySet="ADRES_OBIEKTU">
+          <ScalarProperty Name="ID_ADRESU_OBIEKTU" ColumnName="ID_ADRESU_OBIEKTU" />
+          <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+          <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+          <ScalarProperty Name="NR_BUDYNKU" ColumnName="NR_BUDYNKU" />
+          <ScalarProperty Name="NR_MIESZKANIA" ColumnName="NR_MIESZKANIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DRUZYNA">
+      <EntityTypeMapping TypeName="Model.DRUZYNA">
+        <MappingFragment StoreEntitySet="DRUZYNA">
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+          <ScalarProperty Name="WIEK_MINIMALNY" ColumnName="WIEK_MINIMALNY" />
+          <ScalarProperty Name="WIEK_MAKSYMALNY" ColumnName="WIEK_MAKSYMALNY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OBIEKT_SPORTOWY">
+      <EntityTypeMapping TypeName="Model.OBIEKT_SPORTOWY">
+        <MappingFragment StoreEntitySet="OBIEKT_SPORTOWY">
+          <ScalarProperty Name="ID_OBIEKTU" ColumnName="ID_OBIEKTU" />
+          <ScalarProperty Name="NAZWA_OBIEKTU" ColumnName="NAZWA_OBIEKTU" />
+          <ScalarProperty Name="DATA_NABYCIA" ColumnName="DATA_NABYCIA" />
+          <ScalarProperty Name="DATA_SPRZEDAZY" ColumnName="DATA_SPRZEDAZY" />
+          <ScalarProperty Name="OPIS_OBIEKTU" ColumnName="OPIS_OBIEKTU" />
+          <ScalarProperty Name="ID_ADRESU_OBIEKTU" ColumnName="ID_ADRESU_OBIEKTU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POZYCJA">
+      <EntityTypeMapping TypeName="Model.POZYCJA">
+        <MappingFragment StoreEntitySet="POZYCJA">
+          <ScalarProperty Name="ID_POZYCJI" ColumnName="ID_POZYCJI" />
+          <ScalarProperty Name="NAZWA_POZYCJI" ColumnName="NAZWA_POZYCJI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRACOWNIK">
+      <EntityTypeMapping TypeName="Model.PRACOWNIK">
+        <MappingFragment StoreEntitySet="PRACOWNIK">
+          <ScalarProperty Name="ID_PRACOWNIKA" ColumnName="ID_PRACOWNIKA" />
+          <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+          <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+          <ScalarProperty Name="DATA_ZATRUDNIENIA" ColumnName="DATA_ZATRUDNIENIA" />
+          <ScalarProperty Name="DATA_ZWOLNIENIA" ColumnName="DATA_ZWOLNIENIA" />
+          <ScalarProperty Name="ID_STANOWISKA" ColumnName="ID_STANOWISKA" />
+          <ScalarProperty Name="ID_ADRESU" ColumnName="ID_ADRESU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRACOWNIK_DRUZYNA">
+      <EntityTypeMapping TypeName="Model.PRACOWNIK_DRUZYNA">
+        <MappingFragment StoreEntitySet="PRACOWNIK_DRUZYNA">
+          <ScalarProperty Name="ID_TABELAJEDEN" ColumnName="ID_TABELAJEDEN" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_PRACOWNIKA" ColumnName="ID_PRACOWNIKA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRACOWNIK_OBIEKT">
+      <EntityTypeMapping TypeName="Model.PRACOWNIK_OBIEKT">
+        <MappingFragment StoreEntitySet="PRACOWNIK_OBIEKT">
+          <ScalarProperty Name="ID_TABELADWA" ColumnName="ID_TABELADWA" />
+          <ScalarProperty Name="ID_OBIEKTU" ColumnName="ID_OBIEKTU" />
+          <ScalarProperty Name="ID_PRACOWNIKA" ColumnName="ID_PRACOWNIKA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STANOWISKO">
+      <EntityTypeMapping TypeName="Model.STANOWISKO">
+        <MappingFragment StoreEntitySet="STANOWISKO">
+          <ScalarProperty Name="ID_STANOWISKA" ColumnName="ID_STANOWISKA" />
+          <ScalarProperty Name="NAZWA_STANOWISKA" ColumnName="NAZWA_STANOWISKA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZAWODNIK">
+      <EntityTypeMapping TypeName="Model.ZAWODNIK">
+        <MappingFragment StoreEntitySet="ZAWODNIK">
+          <ScalarProperty Name="ID_ZAWODNIKA" ColumnName="ID_ZAWODNIKA" />
+          <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+          <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+          <ScalarProperty Name="DATA_NABYCIA" ColumnName="DATA_NABYCIA" />
+          <ScalarProperty Name="DATA_TRANSFERU" ColumnName="DATA_TRANSFERU" />
+          <ScalarProperty Name="DATA_EMERYTURY" ColumnName="DATA_EMERYTURY" />
+          <ScalarProperty Name="ID_POZYCJI" ColumnName="ID_POZYCJI" />
+          <ScalarProperty Name="ID_DRUZYNY" ColumnName="ID_DRUZYNY" />
+          <ScalarProperty Name="ID_ADRESU" ColumnName="ID_ADRESU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

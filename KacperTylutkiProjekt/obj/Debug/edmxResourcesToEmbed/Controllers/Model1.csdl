@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADRES">
+    <Key>
+      <PropertyRef Name="ID_ADRESU" />
+    </Key>
+    <Property Name="ID_ADRESU" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MIEJSCOWOSC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ULICA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KOD_POCZTOWY" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NR_BUDYNKU" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NR_MIESZKANIA" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PRACOWNIK" Relationship="Self.FK_ID_ADRESU_PRACOWNIKA" FromRole="ADRES" ToRole="PRACOWNIK" />
+    <NavigationProperty Name="ZAWODNIK" Relationship="Self.FK_ID_ADRESU_ZAWODNIKA" FromRole="ADRES" ToRole="ZAWODNIK" />
+  </EntityType>
+  <EntityType Name="ADRES_OBIEKTU">
+    <Key>
+      <PropertyRef Name="ID_ADRESU_OBIEKTU" />
+    </Key>
+    <Property Name="ID_ADRESU_OBIEKTU" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MIEJSCOWOSC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ULICA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NR_BUDYNKU" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NR_MIESZKANIA" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OBIEKT_SPORTOWY" Relationship="Self.FK_ID_ADRESU_OBIEKTU" FromRole="ADRES_OBIEKTU" ToRole="OBIEKT_SPORTOWY" />
+  </EntityType>
+  <EntityType Name="DRUZYNA">
+    <Key>
+      <PropertyRef Name="ID_DRUZYNY" />
+    </Key>
+    <Property Name="ID_DRUZYNY" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAZWA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WIEK_MINIMALNY" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="WIEK_MAKSYMALNY" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="PRACOWNIK_DRUZYNA" Relationship="Self.FK_ID_DRUZYNY_PRACOWNIK" FromRole="DRUZYNA" ToRole="PRACOWNIK_DRUZYNA" />
+    <NavigationProperty Name="ZAWODNIK" Relationship="Self.FK_ID_DRUZYNY_ZAWODNIKA" FromRole="DRUZYNA" ToRole="ZAWODNIK" />
+  </EntityType>
+  <EntityType Name="OBIEKT_SPORTOWY">
+    <Key>
+      <PropertyRef Name="ID_OBIEKTU" />
+    </Key>
+    <Property Name="ID_OBIEKTU" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAZWA_OBIEKTU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_NABYCIA" Type="DateTime" />
+    <Property Name="DATA_SPRZEDAZY" Type="DateTime" />
+    <Property Name="OPIS_OBIEKTU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ADRESU_OBIEKTU" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="ADRES_OBIEKTU" Relationship="Self.FK_ID_ADRESU_OBIEKTU" FromRole="OBIEKT_SPORTOWY" ToRole="ADRES_OBIEKTU" />
+    <NavigationProperty Name="PRACOWNIK_OBIEKT" Relationship="Self.FK_ID_OBIEKTU_PRACOWNIK" FromRole="OBIEKT_SPORTOWY" ToRole="PRACOWNIK_OBIEKT" />
+  </EntityType>
+  <EntityType Name="POZYCJA">
+    <Key>
+      <PropertyRef Name="ID_POZYCJI" />
+    </Key>
+    <Property Name="ID_POZYCJI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAZWA_POZYCJI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ZAWODNIK" Relationship="Self.FK_ID_POZYCJI_ZAWODNIKA" FromRole="POZYCJA" ToRole="ZAWODNIK" />
+  </EntityType>
+  <EntityType Name="PRACOWNIK">
+    <Key>
+      <PropertyRef Name="ID_PRACOWNIKA" />
+    </Key>
+    <Property Name="ID_PRACOWNIKA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IMIE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAZWISKO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_ZATRUDNIENIA" Type="DateTime" />
+    <Property Name="DATA_ZWOLNIENIA" Type="DateTime" />
+    <Property Name="ID_STANOWISKA" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID_ADRESU" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="ADRES" Relationship="Self.FK_ID_ADRESU_PRACOWNIKA" FromRole="PRACOWNIK" ToRole="ADRES" />
+    <NavigationProperty Name="PRACOWNIK_DRUZYNA" Relationship="Self.FK_ID_PRACOWNIKA_DRUZYNA" FromRole="PRACOWNIK" ToRole="PRACOWNIK_DRUZYNA" />
+    <NavigationProperty Name="PRACOWNIK_OBIEKT" Relationship="Self.FK_ID_PRACOWNIKA_OBIEKT" FromRole="PRACOWNIK" ToRole="PRACOWNIK_OBIEKT" />
+    <NavigationProperty Name="STANOWISKO" Relationship="Self.FK_ID_STANOWISKA_PRACOWNIKA" FromRole="PRACOWNIK" ToRole="STANOWISKO" />
+  </EntityType>
+  <EntityType Name="PRACOWNIK_DRUZYNA">
+    <Key>
+      <PropertyRef Name="ID_TABELAJEDEN" />
+    </Key>
+    <Property Name="ID_TABELAJEDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_DRUZYNY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID_PRACOWNIKA" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="DRUZYNA" Relationship="Self.FK_ID_DRUZYNY_PRACOWNIK" FromRole="PRACOWNIK_DRUZYNA" ToRole="DRUZYNA" />
+    <NavigationProperty Name="PRACOWNIK" Relationship="Self.FK_ID_PRACOWNIKA_DRUZYNA" FromRole="PRACOWNIK_DRUZYNA" ToRole="PRACOWNIK" />
+  </EntityType>
+  <EntityType Name="PRACOWNIK_OBIEKT">
+    <Key>
+      <PropertyRef Name="ID_TABELADWA" />
+    </Key>
+    <Property Name="ID_TABELADWA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_OBIEKTU" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID_PRACOWNIKA" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="OBIEKT_SPORTOWY" Relationship="Self.FK_ID_OBIEKTU_PRACOWNIK" FromRole="PRACOWNIK_OBIEKT" ToRole="OBIEKT_SPORTOWY" />
+    <NavigationProperty Name="PRACOWNIK" Relationship="Self.FK_ID_PRACOWNIKA_OBIEKT" FromRole="PRACOWNIK_OBIEKT" ToRole="PRACOWNIK" />
+  </EntityType>
+  <EntityType Name="STANOWISKO">
+    <Key>
+      <PropertyRef Name="ID_STANOWISKA" />
+    </Key>
+    <Property Name="ID_STANOWISKA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAZWA_STANOWISKA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PRACOWNIK" Relationship="Self.FK_ID_STANOWISKA_PRACOWNIKA" FromRole="STANOWISKO" ToRole="PRACOWNIK" />
+  </EntityType>
+  <EntityType Name="ZAWODNIK">
+    <Key>
+      <PropertyRef Name="ID_ZAWODNIKA" />
+    </Key>
+    <Property Name="ID_ZAWODNIKA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IMIE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAZWISKO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_NABYCIA" Type="DateTime" />
+    <Property Name="DATA_TRANSFERU" Type="DateTime" />
+    <Property Name="DATA_EMERYTURY" Type="DateTime" />
+    <Property Name="ID_POZYCJI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID_DRUZYNY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID_ADRESU" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="ADRES" Relationship="Self.FK_ID_ADRESU_ZAWODNIKA" FromRole="ZAWODNIK" ToRole="ADRES" />
+    <NavigationProperty Name="DRUZYNA" Relationship="Self.FK_ID_DRUZYNY_ZAWODNIKA" FromRole="ZAWODNIK" ToRole="DRUZYNA" />
+    <NavigationProperty Name="POZYCJA" Relationship="Self.FK_ID_POZYCJI_ZAWODNIKA" FromRole="ZAWODNIK" ToRole="POZYCJA" />
+  </EntityType>
+  <Association Name="FK_ID_ADRESU_PRACOWNIKA">
+    <End Role="ADRES" Type="Self.ADRES" Multiplicity="0..1" />
+    <End Role="PRACOWNIK" Type="Self.PRACOWNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADRES">
+        <PropertyRef Name="ID_ADRESU" />
+      </Principal>
+      <Dependent Role="PRACOWNIK">
+        <PropertyRef Name="ID_ADRESU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_ADRESU_ZAWODNIKA">
+    <End Role="ADRES" Type="Self.ADRES" Multiplicity="0..1" />
+    <End Role="ZAWODNIK" Type="Self.ZAWODNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADRES">
+        <PropertyRef Name="ID_ADRESU" />
+      </Principal>
+      <Dependent Role="ZAWODNIK">
+        <PropertyRef Name="ID_ADRESU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_ADRESU_OBIEKTU">
+    <End Role="ADRES_OBIEKTU" Type="Self.ADRES_OBIEKTU" Multiplicity="0..1" />
+    <End Role="OBIEKT_SPORTOWY" Type="Self.OBIEKT_SPORTOWY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADRES_OBIEKTU">
+        <PropertyRef Name="ID_ADRESU_OBIEKTU" />
+      </Principal>
+      <Dependent Role="OBIEKT_SPORTOWY">
+        <PropertyRef Name="ID_ADRESU_OBIEKTU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_DRUZYNY_PRACOWNIK">
+    <End Role="DRUZYNA" Type="Self.DRUZYNA" Multiplicity="0..1" />
+    <End Role="PRACOWNIK_DRUZYNA" Type="Self.PRACOWNIK_DRUZYNA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRUZYNA">
+        <PropertyRef Name="ID_DRUZYNY" />
+      </Principal>
+      <Dependent Role="PRACOWNIK_DRUZYNA">
+        <PropertyRef Name="ID_DRUZYNY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_DRUZYNY_ZAWODNIKA">
+    <End Role="DRUZYNA" Type="Self.DRUZYNA" Multiplicity="0..1" />
+    <End Role="ZAWODNIK" Type="Self.ZAWODNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRUZYNA">
+        <PropertyRef Name="ID_DRUZYNY" />
+      </Principal>
+      <Dependent Role="ZAWODNIK">
+        <PropertyRef Name="ID_DRUZYNY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_OBIEKTU_PRACOWNIK">
+    <End Role="OBIEKT_SPORTOWY" Type="Self.OBIEKT_SPORTOWY" Multiplicity="0..1" />
+    <End Role="PRACOWNIK_OBIEKT" Type="Self.PRACOWNIK_OBIEKT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OBIEKT_SPORTOWY">
+        <PropertyRef Name="ID_OBIEKTU" />
+      </Principal>
+      <Dependent Role="PRACOWNIK_OBIEKT">
+        <PropertyRef Name="ID_OBIEKTU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_POZYCJI_ZAWODNIKA">
+    <End Role="POZYCJA" Type="Self.POZYCJA" Multiplicity="0..1" />
+    <End Role="ZAWODNIK" Type="Self.ZAWODNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POZYCJA">
+        <PropertyRef Name="ID_POZYCJI" />
+      </Principal>
+      <Dependent Role="ZAWODNIK">
+        <PropertyRef Name="ID_POZYCJI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_PRACOWNIKA_DRUZYNA">
+    <End Role="PRACOWNIK" Type="Self.PRACOWNIK" Multiplicity="0..1" />
+    <End Role="PRACOWNIK_DRUZYNA" Type="Self.PRACOWNIK_DRUZYNA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRACOWNIK">
+        <PropertyRef Name="ID_PRACOWNIKA" />
+      </Principal>
+      <Dependent Role="PRACOWNIK_DRUZYNA">
+        <PropertyRef Name="ID_PRACOWNIKA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_PRACOWNIKA_OBIEKT">
+    <End Role="PRACOWNIK" Type="Self.PRACOWNIK" Multiplicity="0..1" />
+    <End Role="PRACOWNIK_OBIEKT" Type="Self.PRACOWNIK_OBIEKT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRACOWNIK">
+        <PropertyRef Name="ID_PRACOWNIKA" />
+      </Principal>
+      <Dependent Role="PRACOWNIK_OBIEKT">
+        <PropertyRef Name="ID_PRACOWNIKA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_STANOWISKA_PRACOWNIKA">
+    <End Role="STANOWISKO" Type="Self.STANOWISKO" Multiplicity="0..1" />
+    <End Role="PRACOWNIK" Type="Self.PRACOWNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STANOWISKO">
+        <PropertyRef Name="ID_STANOWISKA" />
+      </Principal>
+      <Dependent Role="PRACOWNIK">
+        <PropertyRef Name="ID_STANOWISKA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADRES" EntityType="Self.ADRES" />
+    <EntitySet Name="ADRES_OBIEKTU" EntityType="Self.ADRES_OBIEKTU" />
+    <EntitySet Name="DRUZYNA" EntityType="Self.DRUZYNA" />
+    <EntitySet Name="OBIEKT_SPORTOWY" EntityType="Self.OBIEKT_SPORTOWY" />
+    <EntitySet Name="POZYCJA" EntityType="Self.POZYCJA" />
+    <EntitySet Name="PRACOWNIK" EntityType="Self.PRACOWNIK" />
+    <EntitySet Name="PRACOWNIK_DRUZYNA" EntityType="Self.PRACOWNIK_DRUZYNA" />
+    <EntitySet Name="PRACOWNIK_OBIEKT" EntityType="Self.PRACOWNIK_OBIEKT" />
+    <EntitySet Name="STANOWISKO" EntityType="Self.STANOWISKO" />
+    <EntitySet Name="ZAWODNIK" EntityType="Self.ZAWODNIK" />
+    <AssociationSet Name="FK_ID_ADRESU_PRACOWNIKA" Association="Self.FK_ID_ADRESU_PRACOWNIKA">
+      <End Role="ADRES" EntitySet="ADRES" />
+      <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_ADRESU_ZAWODNIKA" Association="Self.FK_ID_ADRESU_ZAWODNIKA">
+      <End Role="ADRES" EntitySet="ADRES" />
+      <End Role="ZAWODNIK" EntitySet="ZAWODNIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_ADRESU_OBIEKTU" Association="Self.FK_ID_ADRESU_OBIEKTU">
+      <End Role="ADRES_OBIEKTU" EntitySet="ADRES_OBIEKTU" />
+      <End Role="OBIEKT_SPORTOWY" EntitySet="OBIEKT_SPORTOWY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_DRUZYNY_PRACOWNIK" Association="Self.FK_ID_DRUZYNY_PRACOWNIK">
+      <End Role="DRUZYNA" EntitySet="DRUZYNA" />
+      <End Role="PRACOWNIK_DRUZYNA" EntitySet="PRACOWNIK_DRUZYNA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_DRUZYNY_ZAWODNIKA" Association="Self.FK_ID_DRUZYNY_ZAWODNIKA">
+      <End Role="DRUZYNA" EntitySet="DRUZYNA" />
+      <End Role="ZAWODNIK" EntitySet="ZAWODNIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_OBIEKTU_PRACOWNIK" Association="Self.FK_ID_OBIEKTU_PRACOWNIK">
+      <End Role="OBIEKT_SPORTOWY" EntitySet="OBIEKT_SPORTOWY" />
+      <End Role="PRACOWNIK_OBIEKT" EntitySet="PRACOWNIK_OBIEKT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_POZYCJI_ZAWODNIKA" Association="Self.FK_ID_POZYCJI_ZAWODNIKA">
+      <End Role="POZYCJA" EntitySet="POZYCJA" />
+      <End Role="ZAWODNIK" EntitySet="ZAWODNIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_PRACOWNIKA_DRUZYNA" Association="Self.FK_ID_PRACOWNIKA_DRUZYNA">
+      <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+      <End Role="PRACOWNIK_DRUZYNA" EntitySet="PRACOWNIK_DRUZYNA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_PRACOWNIKA_OBIEKT" Association="Self.FK_ID_PRACOWNIKA_OBIEKT">
+      <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+      <End Role="PRACOWNIK_OBIEKT" EntitySet="PRACOWNIK_OBIEKT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_STANOWISKA_PRACOWNIKA" Association="Self.FK_ID_STANOWISKA_PRACOWNIKA">
+      <End Role="STANOWISKO" EntitySet="STANOWISKO" />
+      <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

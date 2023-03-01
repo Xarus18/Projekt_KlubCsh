@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8eabc15b62c412cbee6f17393f333c3" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="Model.ADRES" Width="1.5" PointX="1.625" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ADRES_OBIEKTU" Width="1.5" PointX="9.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DRUZYNA" Width="1.5" PointX="5.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OBIEKT_SPORTOWY" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POZYCJA" Width="1.5" PointX="1.625" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRACOWNIK" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRACOWNIK_DRUZYNA" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRACOWNIK_OBIEKT" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STANOWISKO" Width="1.5" PointX="1.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ZAWODNIK" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_ID_ADRESU_PRACOWNIKA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_ADRESU_ZAWODNIKA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_ADRESU_OBIEKTU" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_DRUZYNY_PRACOWNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_DRUZYNY_ZAWODNIKA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_OBIEKTU_PRACOWNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_POZYCJI_ZAWODNIKA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_PRACOWNIKA_DRUZYNA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_PRACOWNIKA_OBIEKT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ID_STANOWISKA_PRACOWNIKA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
